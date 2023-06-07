@@ -26,6 +26,20 @@ def CreateRandomPeople(times):
 
     return namesArr, ageArr
 
+def SortPeople(namesArr, ageArr):
+    for i in range(len(ageArr)):
+        for j in range(len(ageArr)):
+            if ageArr[i] < ageArr[j]:
+                temp = ageArr[i]
+                ageArr[i] = ageArr[j]
+                ageArr[j] = temp
+
+                temp = namesArr[i]
+                namesArr[i] = namesArr[j]
+                namesArr[j] = temp
+
+    return namesArr, ageArr
+
 def PlotArrays(names, ages):
     plt.bar(names, ages)
     plt.xlabel('Names')
@@ -37,3 +51,5 @@ def PlotArrays(names, ages):
 
 namesArr, ageArr = CreateRandomPeople(10)
 PlotArrays(namesArr, ageArr)
+sortedNamesArr, sortedAgeArr = SortPeople(namesArr, ageArr)
+PlotArrays(sortedNamesArr, sortedAgeArr)
